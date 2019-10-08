@@ -6,6 +6,8 @@ public class Manager : MonoBehaviour
 {
     public Material[] materials = new Material[8];
     public GameObject[] pieces = new GameObject[6];
+    private bool show = false;
+
     void Start()
     {
         GameObject pieza = new GameObject();
@@ -18,6 +20,25 @@ public class Manager : MonoBehaviour
 
     void Update()
     {
-        
+        if(show)
+        {
+            transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles, Vector3.up * 180, 2 * Time.deltaTime));
+        }
+
+        else
+        {
+            transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles, Vector3.zero * 180, 2 * Time.deltaTime));
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        show = true;
+        Invoke("Turn", 3);
+    }
+
+    private void Turn()
+    {
+        show = false;
     }
 }
