@@ -5,25 +5,25 @@ using UnityEngine;
 public class Blocks : MonoBehaviour
 {
     public GameObject p; 
-    public Material[] materials = new Material[8];
-    //public GameObject[] pieces = new GameObject[6];
+    //public Material[] materials = new Material[8];
     public List<Material> materialsList = new List<Material>();
-    //GameObject[] piece;
+    public Material temp;
 
     void Start()
     {
         Shuffle(ref materialsList);
-        //GameObject p = new GameObject();
-        for (int i = 0; i < materials.Length; i++)
-        {
-            p.transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < 16; i++)
+        {
+            foreach (var item in materialsList)
+            {
+                int index = 0;
+                temp = materialsList[index];
+                index++;                
+            }
+            p.transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>().material = temp;
+            materialsList.Remove(temp);
+        }        
     }
 
     void Shuffle(ref List<Material> members)
