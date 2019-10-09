@@ -5,7 +5,6 @@ using UnityEngine;
 public class Blocks : MonoBehaviour
 {
     public GameObject p; 
-    //public Material[] materials = new Material[8];
     public List<Material> materialsList = new List<Material>();
     public Material temp;
 
@@ -13,7 +12,7 @@ public class Blocks : MonoBehaviour
     {
         Shuffle(ref materialsList);
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 15; i++)
         {
             foreach (var item in materialsList)
             {
