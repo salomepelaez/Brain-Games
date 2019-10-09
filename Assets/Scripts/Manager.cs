@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
-{
-    
+{    
     private bool show = false;
         
     void Update()
@@ -23,11 +22,13 @@ public class Manager : MonoBehaviour
     private void OnMouseDown()
     {
         show = true;
-        Invoke("Turn", 3);
+        Invoke("Turn", 5);        
     }
 
     private void Turn()
     {
         show = false;
     }
+
+    
 }
