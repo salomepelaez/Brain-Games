@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,6 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &117950372
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,6 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &135932321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -274,6 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!1001 &239394830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -368,6 +377,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!1001 &301257431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -462,6 +474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!1 &361709725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 46e56386376a5bb43aca3d83c46c3e41,
@@ -480,6 +495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &361709728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -679,6 +697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!4 &494095827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 46e56386376a5bb43aca3d83c46c3e41,
@@ -703,6 +724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &510172827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -734,6 +758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &603845601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -841,6 +868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!1001 &773716577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1042,6 +1072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &1114862063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1266,6 +1299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &1339689415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1303,6 +1339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &1500234971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1467,6 +1506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!1001 &1705496792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1548,6 +1590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &1705496796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1684,24 +1729,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p: {fileID: 1877508263}
-  materialsList:
-  - {fileID: 2100000, guid: 247c78db36c6493419cfa3c84af99793, type: 2}
+  materials:
   - {fileID: 2100000, guid: 247c78db36c6493419cfa3c84af99793, type: 2}
   - {fileID: 2100000, guid: 8b573012e8af8234fb64b8eb8a25c75c, type: 2}
-  - {fileID: 2100000, guid: 8b573012e8af8234fb64b8eb8a25c75c, type: 2}
-  - {fileID: 2100000, guid: 2fdf3109e31b7b94da76dfbb0c83d038, type: 2}
   - {fileID: 2100000, guid: 2fdf3109e31b7b94da76dfbb0c83d038, type: 2}
   - {fileID: 2100000, guid: 3be0b0d3731ae4e4fa95dc7161519b8d, type: 2}
-  - {fileID: 2100000, guid: 3be0b0d3731ae4e4fa95dc7161519b8d, type: 2}
-  - {fileID: 2100000, guid: 89272dc820a3d9a43a5d1a502530fe8d, type: 2}
   - {fileID: 2100000, guid: 89272dc820a3d9a43a5d1a502530fe8d, type: 2}
   - {fileID: 2100000, guid: 935a635ece659df4d9b4a8e34a247b39, type: 2}
-  - {fileID: 2100000, guid: 935a635ece659df4d9b4a8e34a247b39, type: 2}
-  - {fileID: 2100000, guid: 2312adfe76ffb374d9c0c8be1f426301, type: 2}
   - {fileID: 2100000, guid: 2312adfe76ffb374d9c0c8be1f426301, type: 2}
   - {fileID: 2100000, guid: a6bbd1f01052bd34a90a367f8844dc6b, type: 2}
-  - {fileID: 2100000, guid: a6bbd1f01052bd34a90a367f8844dc6b, type: 2}
+  materialsList: []
   temp: {fileID: 0}
+  first: {fileID: 0}
+  second: {fileID: 0}
 --- !u!1001 &1884716827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1777,6 +1817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b779609ce951e4baa2ac2dae62ac81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  show: 0
+  myBlocks: {fileID: 0}
+  myType: 0
 --- !u!65 &1907766654
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,9 +5,13 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {    
     public bool show = false;
-    public static GameObject[] coincidence = new GameObject[2];
-    //GameObject first;
-    //GameObject second;
+    public Blocks myBlocks;
+    public Name myType;
+   
+    void Start()
+    {
+        myBlocks = FindObjectOfType<Blocks>();    
+    }
 
     void Update()
     {
@@ -24,23 +28,7 @@ public class Manager : MonoBehaviour
     
     private void OnMouseDown()
     {
+        myBlocks.AddCube(this.gameObject);
         show = true;
-
-        if(coincidence[0] == null)
-        {
-            coincidence[0] = gameObject;            
-        }
-
-        else if (coincidence[1] == null)
-        {
-            coincidence[1] = gameObject;
-        }
     }
-
-    private void Turn()
-    {
-        show = false;
-    }
-
-    
 }

@@ -4,31 +4,47 @@ using UnityEngine;
 
 public class Blocks : MonoBehaviour
 {
-    public GameObject p; 
+    public GameObject p;
+    public Material[] materials = new Material[8];
     public List<Material> materialsList = new List<Material>();
     public Material temp;
-  
-    
-    void Start()
-    {
-        Shuffle(ref materialsList);
+    public GameObject first, second;
 
-        for (int i = 0; i < 15; i++)
-        {
-            foreach (var item in materialsList)
-            {
-                int y = 0;
-                temp = materialsList[y];
-                y++;                
-            }
-            p.transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>().material = temp;
-            materialsList.Remove(temp);
-        }        
+    public Dictionary<Material, Name> dic = new Dictionary<Material, Name>();
+
+    private void Awake()
+    {
+        References();
     }
 
-    private void OnMouseDown()
+    void Start()
     {
-        CheckIfMatch();       
+        for (int i = 0; i < materials.Length; i++)
+        {
+            materialsList.Add(materials[i]);
+            materialsList.Add(materials[i]);
+        }
+
+        Shuffle(ref materialsList);
+
+        for (int i = 0; i <= 15; i++)
+        {
+            p.transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>().material = materialsList[i];
+            p.transform.GetChild(i).GetChild(0).GetComponent<Manager>().myType = dic[materialsList[i]];
+
+        }
+    }
+
+    public void References()
+    {
+        dic.Add(materials[0], Name.Bird);
+        dic.Add(materials[1], Name.Bull);
+        dic.Add(materials[2], Name.Dragon);
+        dic.Add(materials[3], Name.Hawk);
+        dic.Add(materials[4], Name.Head);
+        dic.Add(materials[5], Name.ManBend);
+        dic.Add(materials[6], Name.ManStand);
+        dic.Add(materials[7], Name.Owl);
     }
 
     void Shuffle(ref List<Material> members)
@@ -45,11 +61,46 @@ public class Blocks : MonoBehaviour
         }
     }
 
-    public void CheckIfMatch()
+    public void AddCube(GameObject cube)
     {
-        if(Manager.coincidence[0].gameObject.GetComponent<MeshRenderer>().material == Manager.coincidence[1].gameObject.GetComponent<MeshRenderer>().material)
+        if (first == null)
         {
-            Debug.Log("nel");
+            first = cube; 
+        }
+        else if (first != cube)
+        {
+            second = cube;
+            CheckIfMatch();
         }
     }
+
+    private void CheckIfMatch()
+    {
+        if(first.GetComponent<Manager>().myType == second.GetComponent<Manager>().myType)
+        {
+            Invoke("Match", 2.0f);
+        }
+
+        else if (first.GetComponent<Manager>().myType != second.GetComponent<Manager>().myType)
+        {
+            Invoke("DoesNotMatch", 2.0f);
+        }
+    }
+
+    private void DoesNotMatch()
+    {        
+        first.GetComponent<Manager>().show = false;
+        second.GetComponent<Manager>().show = false;
+        first = null;
+        second = null;
+    }
+
+    private void Match()
+    {
+        Destroy(first);
+        Destroy(second);
+    }
+
 }
+
+public enum Name { Bird, Bull, Dragon, Hawk, Head, ManBend, ManStand, Owl}
