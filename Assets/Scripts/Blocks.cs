@@ -7,12 +7,8 @@ public class Blocks : MonoBehaviour
     public GameObject p; 
     public List<Material> materialsList = new List<Material>();
     public Material temp;
+  
     
-    private GameObject first = null;
-    private GameObject second = null;
-
-    private bool match = false;
-
     void Start()
     {
         Shuffle(ref materialsList);
@@ -51,11 +47,9 @@ public class Blocks : MonoBehaviour
 
     public void CheckIfMatch()
     {
-        Material material = temp;
-        if (temp == material)
+        if(Manager.coincidence[0].gameObject.GetComponent<MeshRenderer>().material == Manager.coincidence[1].gameObject.GetComponent<MeshRenderer>().material)
         {
-            match = true;
-            Debug.Log(match);
+            Debug.Log("nel");
         }
     }
 }
