@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Blocks : MonoBehaviour
 {
@@ -12,9 +13,20 @@ public class Blocks : MonoBehaviour
 
     public Dictionary<Material, Name> dic = new Dictionary<Material, Name>();
 
+    public TextMeshProUGUI timer;
+
+    private bool player1 = true;
+    private TextMeshProUGUI player;
+    private TextMeshProUGUI _player1;
+    private TextMeshProUGUI _player2;
+
     private void Awake()
     {
         References();
+        timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        player = GameObject.Find("Player").GetComponent<TextMeshProUGUI>();
+        _player1 = GameObject.Find("Player1").GetComponent<TextMeshProUGUI>();
+        _player2 = GameObject.Find("Player2").GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
@@ -31,7 +43,38 @@ public class Blocks : MonoBehaviour
         {
             p.transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>().material = materialsList[i];
             p.transform.GetChild(i).GetChild(0).GetComponent<Manager>().myType = dic[materialsList[i]];
+        }
 
+        InvokeRepeating("TimeCounter", 0, 1f);
+    }
+
+    int time = 0;
+    int counter1 = 0;
+    int counter2 = 0;
+    private void Update()
+    {
+        timer.text = "Time: " + time;
+        _player1.text = "Player 1 points: " + counter1;
+        _player2.text = "Player 2 points: " + counter2;
+
+        if (player1)
+        {
+            player.text = "Go ahead player 1";
+        }
+
+        else
+            player.text = "Go ahead player 2";
+
+        if(aMatch == true && player1 == true)
+        {
+            counter2 = counter2 + 5;
+            aMatch = false;
+        }
+
+        else if (aMatch == true && player1 == false)
+        {
+            counter1 = counter1 + 5;
+            aMatch = false;
         }
     }
 
@@ -67,18 +110,22 @@ public class Blocks : MonoBehaviour
         {
             first = cube; 
         }
+
         else if (first != cube)
         {
             second = cube;
             CheckIfMatch();
+            player1 = !player1;
         }
     }
 
+    bool aMatch;
     private void CheckIfMatch()
     {
         if(first.GetComponent<Manager>().myType == second.GetComponent<Manager>().myType)
         {
             Invoke("Match", 2.0f);
+            aMatch = true;
         }
 
         else if (first.GetComponent<Manager>().myType != second.GetComponent<Manager>().myType)
@@ -99,6 +146,11 @@ public class Blocks : MonoBehaviour
     {
         Destroy(first);
         Destroy(second);
+    }
+
+    private void TimeCounter()
+    {        
+        time++;
     }
 
 }
