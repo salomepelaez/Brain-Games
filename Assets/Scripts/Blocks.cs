@@ -37,14 +37,14 @@ public class Blocks : MonoBehaviour
 
     public void References()
     {
-        dic.Add(materials[0], Name.Bird);
-        dic.Add(materials[1], Name.Bull);
-        dic.Add(materials[2], Name.Dragon);
-        dic.Add(materials[3], Name.Hawk);
-        dic.Add(materials[4], Name.Head);
-        dic.Add(materials[5], Name.ManBend);
-        dic.Add(materials[6], Name.ManStand);
-        dic.Add(materials[7], Name.Owl);
+        dic.Add(materials[0], Name.Llama);
+        dic.Add(materials[1], Name.Waves);
+        dic.Add(materials[2], Name.Sunflower);
+        dic.Add(materials[3], Name.Sun);
+        dic.Add(materials[4], Name.Flower);
+        dic.Add(materials[5], Name.Macaroon);
+        dic.Add(materials[6], Name.Hand);
+        dic.Add(materials[7], Name.Lenny);
     }
 
     void Shuffle(ref List<Material> members)
@@ -103,4 +103,4 @@ public class Blocks : MonoBehaviour
 
 }
 
-public enum Name { Bird, Bull, Dragon, Hawk, Head, ManBend, ManStand, Owl}
+public enum Name { Llama, Waves, Sunflower, Sun, Flower, Macaroon, Hand, Lenny}
