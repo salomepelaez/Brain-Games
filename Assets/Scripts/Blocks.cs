@@ -62,7 +62,7 @@ public class Blocks : MonoBehaviour
     {
         generalCounter = counter1 + counter2;
 
-        if(inGame == true)
+        if(inGame)
         {
             timer.text = "Time: " + time;
             _player1.text = "Player 1 points: " + counter1;
@@ -87,7 +87,15 @@ public class Blocks : MonoBehaviour
                 counter1 = counter1 + 5;
                 aMatch = false;
             }
-        }        
+        }     
+        
+        if(!inGame)
+        {
+            timer.text = "";
+            _player1.text = "";
+            _player2.text = "";
+            player.text = "";
+        }
 
         if(generalCounter >= 40)
         {
@@ -101,6 +109,11 @@ public class Blocks : MonoBehaviour
             {
                 winner.text = "Winner!";
                 cong.text = "Congratulations player two!";
+            }
+
+            if(counter1 == 20)
+            {
+                winner.text = "Oops! There is no winner";
             }
 
             inGame = false;
