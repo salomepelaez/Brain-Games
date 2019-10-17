@@ -5,6 +5,8 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {    
     public bool show = false;
+    public static bool lockMouse;
+
     public Blocks myBlocks;
     public Name myType;
    
@@ -28,7 +30,10 @@ public class Manager : MonoBehaviour
     
     private void OnMouseDown()
     {
-        myBlocks.AddCube(this.gameObject);
-        show = true;
+        if(!lockMouse)
+        {
+            myBlocks.AddCube(this.gameObject);
+            show = true;
+        }
     }
 }

@@ -19,6 +19,7 @@ public class Blocks : MonoBehaviour
     private TextMeshProUGUI player;
     private TextMeshProUGUI _player1;
     private TextMeshProUGUI _player2;
+       
 
     private void Awake()
     {
@@ -116,6 +117,7 @@ public class Blocks : MonoBehaviour
             second = cube;
             CheckIfMatch();
             player1 = !player1;
+            Manager.lockMouse = true;
         }
     }
 
@@ -129,7 +131,7 @@ public class Blocks : MonoBehaviour
         }
 
         else if (first.GetComponent<Manager>().myType != second.GetComponent<Manager>().myType)
-        {
+        {            
             Invoke("DoesNotMatch", 2.0f);
         }
     }
@@ -140,12 +142,16 @@ public class Blocks : MonoBehaviour
         second.GetComponent<Manager>().show = false;
         first = null;
         second = null;
+
+        Manager.lockMouse = false;
     }
 
     private void Match()
     {
         Destroy(first);
         Destroy(second);
+
+        Manager.lockMouse = false;
     }
 
     private void TimeCounter()
