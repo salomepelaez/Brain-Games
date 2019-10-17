@@ -14,13 +14,15 @@ public class Blocks : MonoBehaviour
     public Dictionary<Material, Name> dic = new Dictionary<Material, Name>();
 
     public TextMeshProUGUI timer;
+    private TextMeshProUGUI winner;
+    private TextMeshProUGUI cong;
 
+    private bool inGame = true;
     private bool player1 = true;
     private TextMeshProUGUI player;
     private TextMeshProUGUI _player1;
     private TextMeshProUGUI _player2;
-       
-
+    
     private void Awake()
     {
         References();
@@ -28,6 +30,8 @@ public class Blocks : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<TextMeshProUGUI>();
         _player1 = GameObject.Find("Player1").GetComponent<TextMeshProUGUI>();
         _player2 = GameObject.Find("Player2").GetComponent<TextMeshProUGUI>();
+        winner = GameObject.Find("Winner").GetComponent<TextMeshProUGUI>();
+        cong = GameObject.Find("Congratulations").GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
@@ -52,31 +56,58 @@ public class Blocks : MonoBehaviour
     int time = 0;
     int counter1 = 0;
     int counter2 = 0;
+    int generalCounter;
+
     private void Update()
     {
-        timer.text = "Time: " + time;
-        _player1.text = "Player 1 points: " + counter1;
-        _player2.text = "Player 2 points: " + counter2;
+        generalCounter = counter1 + counter2;
 
-        if (player1)
+        if(inGame == true)
         {
-            player.text = "Go ahead player 1";
-        }
+            timer.text = "Time: " + time;
+            _player1.text = "Player 1 points: " + counter1;
+            _player2.text = "Player 2 points: " + counter2;
 
-        else
-            player.text = "Go ahead player 2";
+            if (player1)
+            {
+                player.text = "Go ahead player 1";
+            }
 
-        if(aMatch == true && player1 == true)
+            else
+                player.text = "Go ahead player 2";
+
+            if (aMatch == true && player1 == true)
+            {
+                counter2 = counter2 + 5;
+                aMatch = false;
+            }
+
+            else if (aMatch == true && player1 == false)
+            {
+                counter1 = counter1 + 5;
+                aMatch = false;
+            }
+        }        
+
+        if(generalCounter >= 40)
         {
-            counter2 = counter2 + 5;
-            aMatch = false;
-        }
+            if(counter1 == 25)
+            {
+                winner.text = "Winner!";
+                cong.text = "Congratulations player one!";                
+            }
 
-        else if (aMatch == true && player1 == false)
-        {
-            counter1 = counter1 + 5;
-            aMatch = false;
+            if (counter2 == 25)
+            {
+                winner.text = "Winner!";
+                cong.text = "Congratulations player two!";
+            }
+
+            inGame = false;
         }
+        
+
+        
     }
 
     public void References()
@@ -152,6 +183,9 @@ public class Blocks : MonoBehaviour
         Destroy(second);
 
         Manager.lockMouse = false;
+
+        generalCounter = generalCounter + 2;
+        Debug.Log(generalCounter);
     }
 
     private void TimeCounter()
