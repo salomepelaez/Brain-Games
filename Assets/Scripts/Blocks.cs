@@ -63,6 +63,7 @@ public class Blocks : MonoBehaviour
         if(counter == 16)
         {
             inGame = false;
+            winner.text = "Winner!";
         }
     }
 
@@ -113,7 +114,6 @@ public class Blocks : MonoBehaviour
         {
             Invoke("Match", 2.0f);
             counter = counter + 2;
-            Debug.Log(counter);
         }
 
         else if (first.GetComponent<Manager>().myType != second.GetComponent<Manager>().myType)
