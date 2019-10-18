@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
-{    
+public class ManagerMP : MonoBehaviour
+{
     public bool show = false;
     public static bool lockMouse;
 
-    public Blocks myBlocks;
     public Name myType;
 
-   
+    public MultiplayerGame multiplayerP;
+
     void Start()
     {
-        myBlocks = FindObjectOfType<Blocks>();
+        multiplayerP = FindObjectOfType<MultiplayerGame>();
     }
 
     void Update()
     {
-        if(show)
+        if (show)
         {
             transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles, Vector3.up * 180, 2 * Time.deltaTime));
         }
@@ -28,12 +28,12 @@ public class Manager : MonoBehaviour
             transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles, Vector3.zero * 180, 2 * Time.deltaTime));
         }
     }
-    
+
     private void OnMouseDown()
     {
-        if(!lockMouse)
+        if (!lockMouse)
         {
-            myBlocks.AddCube(this.gameObject);
+            multiplayerP.AddCube(this.gameObject);
             show = true;
         }
     }

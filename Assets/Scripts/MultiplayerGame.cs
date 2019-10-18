@@ -47,7 +47,7 @@ public class MultiplayerGame : MonoBehaviour
         for (int i = 0; i <= 15; i++)
         {
             p.transform.GetChild(i).GetChild(0).GetComponent<MeshRenderer>().material = materialsList[i];
-            p.transform.GetChild(i).GetChild(0).GetComponent<Manager>().myType = dic[materialsList[i]];
+            p.transform.GetChild(i).GetChild(0).GetComponent<ManagerMP>().myType = dic[materialsList[i]];
         }
 
         InvokeRepeating("TimeCounter", 0, 1f);
@@ -161,20 +161,20 @@ public class MultiplayerGame : MonoBehaviour
             second = cube;
             CheckIfMatch();
             player1 = !player1;
-            Manager.lockMouse = true;
+            ManagerMP.lockMouse = true;
         }
     }
 
     bool aMatch;
     private void CheckIfMatch()
     {
-        if (first.GetComponent<Manager>().myType == second.GetComponent<Manager>().myType)
+        if (first.GetComponent<ManagerMP>().myType == second.GetComponent<ManagerMP>().myType)
         {
             Invoke("Match", 2.0f);
             aMatch = true;
         }
 
-        else if (first.GetComponent<Manager>().myType != second.GetComponent<Manager>().myType)
+        else if (first.GetComponent<ManagerMP>().myType != second.GetComponent<ManagerMP>().myType)
         {
             Invoke("DoesNotMatch", 2.0f);
         }
@@ -182,12 +182,12 @@ public class MultiplayerGame : MonoBehaviour
 
     private void DoesNotMatch()
     {
-        first.GetComponent<Manager>().show = false;
-        second.GetComponent<Manager>().show = false;
+        first.GetComponent<ManagerMP>().show = false;
+        second.GetComponent<ManagerMP>().show = false;
         first = null;
         second = null;
 
-        Manager.lockMouse = false;
+        ManagerMP.lockMouse = false;
     }
 
     private void Match()
@@ -195,7 +195,7 @@ public class MultiplayerGame : MonoBehaviour
         Destroy(first);
         Destroy(second);
 
-        Manager.lockMouse = false;
+        ManagerMP.lockMouse = false;
 
         generalCounter = generalCounter + 2;
         Debug.Log(generalCounter);
