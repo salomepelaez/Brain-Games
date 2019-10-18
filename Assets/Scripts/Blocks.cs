@@ -60,7 +60,7 @@ public class Blocks : MonoBehaviour
             timer.text = "";
         }
 
-        if(counter == 16)
+        if(counter >= 16)
         {
             inGame = false;
             winner.text = "Winner!";
@@ -123,9 +123,14 @@ public class Blocks : MonoBehaviour
     }
 
     private void DoesNotMatch()
-    {        
+    {
+        Debug.Log(first);
+        Debug.Log(first.GetComponent<Manager>());
+        if (first == null) return;
         first.GetComponent<Manager>().show = false;
+        if(second == null) return;
         second.GetComponent<Manager>().show = false;
+
         first = null;
         second = null;
 
