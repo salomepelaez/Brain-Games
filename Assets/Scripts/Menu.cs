@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Multiplayer");
     }
 
-    public void First()
+    public void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
     }

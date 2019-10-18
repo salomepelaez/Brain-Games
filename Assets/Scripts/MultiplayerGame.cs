@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Blocks : MonoBehaviour
+public class MultiplayerGame : MonoBehaviour
 {
     public GameObject p;
     public Material[] materials = new Material[8];
@@ -15,14 +15,23 @@ public class Blocks : MonoBehaviour
 
     public TextMeshProUGUI timer;
     private TextMeshProUGUI winner;
+    private TextMeshProUGUI cong;
 
     private bool inGame = true;
-    
+    private bool player1 = true;
+    private TextMeshProUGUI player;
+    private TextMeshProUGUI _player1;
+    private TextMeshProUGUI _player2;
+
     private void Awake()
     {
         References();
         timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        player = GameObject.Find("Player").GetComponent<TextMeshProUGUI>();
+        _player1 = GameObject.Find("Player1").GetComponent<TextMeshProUGUI>();
+        _player2 = GameObject.Find("Player2").GetComponent<TextMeshProUGUI>();
         winner = GameObject.Find("Winner").GetComponent<TextMeshProUGUI>();
+        cong = GameObject.Find("Congratulations").GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
@@ -45,25 +54,73 @@ public class Blocks : MonoBehaviour
     }
 
     int time = 0;
-    int counter = 0;
+    int counter1 = 0;
+    int counter2 = 0;
+    int generalCounter;
 
     private void Update()
     {
-        if(inGame)
+        generalCounter = counter1 + counter2;
+
+        if (inGame)
         {
             timer.text = "Time: " + time;
+            _player1.text = "Player 1 points: " + counter1;
+            _player2.text = "Player 2 points: " + counter2;
 
-        }     
-        
-        if(!inGame)
+            if (player1)
+            {
+                player.text = "Go ahead player 1";
+            }
+
+            else
+                player.text = "Go ahead player 2";
+
+            if (aMatch == true && player1 == true)
+            {
+                counter2 = counter2 + 5;
+                aMatch = false;
+            }
+
+            else if (aMatch == true && player1 == false)
+            {
+                counter1 = counter1 + 5;
+                aMatch = false;
+            }
+        }
+
+        if (!inGame)
         {
             timer.text = "";
+            _player1.text = "";
+            _player2.text = "";
+            player.text = "";
         }
 
-        if(counter == 16)
+        if (generalCounter >= 40)
         {
+            if (counter1 == 25)
+            {
+                winner.text = "Winner!";
+                cong.text = "Congratulations player one!";
+            }
+
+            if (counter2 == 25)
+            {
+                winner.text = "Winner!";
+                cong.text = "Congratulations player two!";
+            }
+
+            if (counter1 == 20)
+            {
+                winner.text = "Oops! There is no winner";
+            }
+
             inGame = false;
         }
+
+
+
     }
 
     public void References()
@@ -82,7 +139,7 @@ public class Blocks : MonoBehaviour
     {
         int n = members.Count;
 
-        while(n > 1)
+        while (n > 1)
         {
             n--;
             int x = Random.Range(0, n + 1);
@@ -96,34 +153,35 @@ public class Blocks : MonoBehaviour
     {
         if (first == null)
         {
-            first = cube; 
+            first = cube;
         }
 
         else if (first != cube)
         {
             second = cube;
             CheckIfMatch();
+            player1 = !player1;
             Manager.lockMouse = true;
         }
     }
 
+    bool aMatch;
     private void CheckIfMatch()
     {
-        if(first.GetComponent<Manager>().myType == second.GetComponent<Manager>().myType)
+        if (first.GetComponent<Manager>().myType == second.GetComponent<Manager>().myType)
         {
             Invoke("Match", 2.0f);
-            counter = counter + 2;
-            Debug.Log(counter);
+            aMatch = true;
         }
 
         else if (first.GetComponent<Manager>().myType != second.GetComponent<Manager>().myType)
-        {            
+        {
             Invoke("DoesNotMatch", 2.0f);
         }
     }
 
     private void DoesNotMatch()
-    {        
+    {
         first.GetComponent<Manager>().show = false;
         second.GetComponent<Manager>().show = false;
         first = null;
@@ -138,13 +196,13 @@ public class Blocks : MonoBehaviour
         Destroy(second);
 
         Manager.lockMouse = false;
+
+        generalCounter = generalCounter + 2;
+        Debug.Log(generalCounter);
     }
 
     private void TimeCounter()
-    {        
+    {
         time++;
     }
-
 }
-
-public enum Name { Llama, Waves, Sunflower, Sun, Flower, Macaroon, Hand, Lenny}

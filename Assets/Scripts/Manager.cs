@@ -9,6 +9,8 @@ public class Manager : MonoBehaviour
 
     public Blocks myBlocks;
     public Name myType;
+
+    public MultiplayerGame player;
    
     void Start()
     {
